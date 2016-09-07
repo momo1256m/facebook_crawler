@@ -6,6 +6,7 @@ def detect_fake_user(user):
 	req_for_friendsAmount = requests.get("https://graph.facebook.com/v2.5/{0}/friends?access_token={1}".format(user['from']['id'], token))
 	friends_json = json.loads(req_for_friendsAmount.text)
 	try:
+		print(friends_json)
 		if friends_json['summary']['total_count']<200:
 			print(user['from']['name'], '朋友數小於200')
 		else:
